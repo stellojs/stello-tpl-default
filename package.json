@@ -1,0 +1,31 @@
+{
+  "name": "stello-tpl-default",
+  "version": "0.0.0",
+  "description": "A basic template for stello",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stellojs/stello-tpl-default.git"
+  },
+  "keywords": [
+    "stello",
+    "template"
+  ],
+  "author": "jtrussell",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stellojs/stello-tpl-default/issues"
+  },
+  "homepage": "https://github.com/stellojs/stello-tpl-default",
+  "dependencies": {
+    "metalsmith-markdown": "^0.2.1",
+    "metalsmith-templates": "^0.4.0",
+    "handlebars": "^2.0.0-alpha.2",
+    "metalsmith": "^0.6.0",
+    "metalsmith-permalinks": "^0.3.0"
+  }
+}

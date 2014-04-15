@@ -1,0 +1,15 @@
+{
+  "metadata": {
+    "title": "My Stello Site",
+    "description": "Made with <3"
+  },
+  "plugins": {
+    "metalsmith-markdown": {},
+    "metalsmith-permalinks": {
+      "pattern": ":title"
+    },
+    "metalsmith-templates": {
+      "engine": "handlebars"
+    }
+  }
+}
