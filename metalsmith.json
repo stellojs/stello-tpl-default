@@ -5,6 +5,9 @@
   },
   "plugins": {
     "metalsmith-markdown": {},
+    "metalsmith-collections": {
+      "posts": {}
+    },
     "metalsmith-permalinks": {
       "pattern": ":title"
     },
