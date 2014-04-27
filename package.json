@@ -5,7 +5,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "stello-post-fetch": "node scripts/post-fetch.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "handlebars": "^2.0.0-alpha.2",
     "metalsmith": "^0.6.0",
     "metalsmith-permalinks": "^0.3.0",
-    "metalsmith-collections": "^0.4.0"
+    "metalsmith-collections": "^0.4.0",
+    "lodash.after": "^2.4.1"
   }
 }
