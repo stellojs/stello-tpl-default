@@ -3,8 +3,8 @@
 var posts, pages;
 
 try {
-  posts = require('../.stello/trello/posts.json');
-  pages = require('../.stello/trello/pages.json');
+  posts = require('../../.stello/trello/posts.json');
+  pages = require('../../.stello/trello/pages.json');
 } catch(err) {
   console.log('Whoops, where is the trello data?');
   process.exit();
@@ -34,3 +34,4 @@ var makePage = function(pData) {
 
 posts.forEach(makePost);
 pages.forEach(makePage);
+

@@ -5,7 +5,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "stello-post-fetch": "node scripts/post-fetch.js"
+    "stello-post-fetch": "node ./.stello/scripts/post-fetch.js"
   },
   "repository": {
     "type": "git",
