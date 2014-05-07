@@ -12,7 +12,8 @@ try {
 
 var fs = require('fs')
   , join = require('path').join
-  , after = require('lodash.after');
+  , after = require('lodash.after')
+  , yaml = require('js-yaml');
 
 var numFilesToWrite = posts.length + pages.length;
 
@@ -20,17 +21,40 @@ var cleanup = after(numFilesToWrite, function() {
   console.log('Done');
 });
 
-var makePost = function(pData) {
-  var postFile = 'post-' + pData.id + '.md';
-  /*code*/
+var makeFile = function(type, data) {
+  var fileName = type + '-' + data.id + '.md';
+
+  var metaDoc = {
+    id: data.id,
+    title: data.name,
+    collection: type,
+    labels: data.labels,
+    position: data.pos,
+    trello: {
+      url: data.url
+    }
+  };
+
+  var content = data.description;
+
+  /**
+   * @todo Write combined contents to file
+   */
+
   cleanup();
 };
 
-var makePage = function(pData) {
-  var pageFile = 'page-' + pData.id + '.md';
-  /*code*/
-  cleanup();
+var makePost = function(data) {
+  makeFile('post', data);
 };
+
+var makePage = function(data) {
+  makeFile('page', data);
+};
+
+/**
+ * @todo Clean src folder
+ */
 
 posts.forEach(makePost);
 pages.forEach(makePage);
