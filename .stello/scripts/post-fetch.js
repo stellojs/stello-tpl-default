@@ -31,6 +31,7 @@ var makeFile = function(type, data) {
   var metaDoc = {
     id: data.id,
     title: data.name,
+    template: type + '.hbs',
     collection: type,
     labels: data.labels,
     position: data.pos,
