@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "stello-post-fetch": "node ./.stello/scripts/post-fetch.js",
-    "stello-build": "node ./node_modules/metalsmith/bin/metalsmith"
+    "stello-build": "node ./.stello/scripts/build.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "metalsmith-collections": "^0.4.0",
     "lodash.after": "^2.4.1",
     "js-yaml": "^3.0.2",
-    "rimraf": "^2.2.8"
+    "rimraf": "^2.2.8",
+    "async": "^0.9.0"
   }
 }
