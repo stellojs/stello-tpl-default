@@ -4,17 +4,14 @@
   "description": "A basic template for stello",
   "main": "index.js",
   "private": true,
-  "scripts": {
-    "stello-post-fetch": "node ./.stello/scripts/post-fetch.js",
-    "stello-build": "node ./.stello/scripts/build.js"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/stellojs/stello-tpl-default.git"
   },
   "keywords": [
     "stello",
-    "template"
+    "template",
+    "stello-template"
   ],
   "author": "jtrussell",
   "license": "MIT",
@@ -23,15 +20,6 @@
   },
   "homepage": "https://github.com/stellojs/stello-tpl-default",
   "dependencies": {
-    "metalsmith-markdown": "^0.2.1",
-    "metalsmith-templates": "^0.4.0",
-    "handlebars": "^2.0.0-alpha.2",
-    "metalsmith": "^0.6.0",
-    "metalsmith-permalinks": "^0.3.0",
-    "metalsmith-collections": "^0.4.0",
-    "lodash.after": "^2.4.1",
-    "js-yaml": "^3.0.2",
-    "rimraf": "^2.2.8",
-    "async": "^0.9.0"
+    "handlebars": "^2.0.0"
   }
 }
