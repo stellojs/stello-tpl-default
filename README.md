@@ -5,7 +5,7 @@
 
 ## Installation and Usage
 
-Install with `npm --save stello-tpl-default`
+Install with `npm --save stello-tpl-starter`
  
 
 ## License

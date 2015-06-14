@@ -1,12 +1,12 @@
 {
-  "name": "stello-tpl-default",
+  "name": "stello-tpl-starter",
   "version": "0.0.0",
   "description": "A basic template for stello",
   "main": "index.js",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/stellojs/stello-tpl-default.git"
+    "url": "https://github.com/stellojs/stello-tpl-starter.git"
   },
   "keywords": [
     "stello",
@@ -16,9 +16,9 @@
   "author": "jtrussell",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/stellojs/stello-tpl-default/issues"
+    "url": "https://github.com/stellojs/stello-tpl-starter/issues"
   },
-  "homepage": "https://github.com/stellojs/stello-tpl-default",
+  "homepage": "https://github.com/stellojs/stello-tpl-starter",
   "dependencies": {
     "handlebars": "^2.0.0"
   }
