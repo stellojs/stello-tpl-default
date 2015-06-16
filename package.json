@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/stellojs/stello-tpl-starter",
   "dependencies": {
+    "bluebird": "^2.9.30",
     "handlebars": "^2.0.0"
   }
 }
