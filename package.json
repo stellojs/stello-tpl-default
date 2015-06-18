@@ -4,6 +4,10 @@
   "description": "A basic template for stello",
   "main": "index.js",
   "private": true,
+  "scripts": {
+    "test": "node_modules/.bin/mocha",
+    "testw": "node_modules/.bin/mocha -w"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/stellojs/stello-tpl-starter.git"
@@ -22,5 +26,12 @@
   "dependencies": {
     "bluebird": "^2.9.30",
     "handlebars": "^2.0.0"
+  },
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "cheerio": "^0.19.0",
+    "mocha": "^2.2.5",
+    "shelljs": "^0.5.1",
+    "sinon": "^1.15.3"
   }
 }
