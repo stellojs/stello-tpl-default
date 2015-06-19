@@ -28,6 +28,6 @@ exports.build = function build(stello, cb) {
     Handlebars.registerPartial('page', results.page);
     Handlebars.registerPartial('post', results.post);
 
-    console.log('Build!');
+    cb();
   });
 };

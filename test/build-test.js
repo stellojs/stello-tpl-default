@@ -37,6 +37,10 @@ beforeEach(function(done) {
     });
 });
 
+beforeEach(function(done) {
+  build(stello, done);
+});
+
 afterEach(function() {
   sh.rm('-rf', __dirname + '/www');
   sh.cd(cwdSave);
