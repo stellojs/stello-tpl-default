@@ -1,3 +1,4 @@
+/*global expect, it, beforeEach, afterEach */
 
 'use strict';
 
@@ -47,11 +48,11 @@ afterEach(function() {
 });
 
 describe('build', function() {
-  it('should create create a home page from first pages card', function() {
+  it('should create a home page from first pages card', function() {
     // ...
   });
 
-  it('should create single pages for all pages cards', function() {
+  it('should create pages', function() {
     // ...
   });
 
