@@ -52,8 +52,15 @@ describe('build', function() {
     // ...
   });
 
-  it('should create pages', function() {
-    // ...
+  it('should create pages', function(done) {
+    P.props({
+      one: fs.existsAsync('first-page/index.html'),
+      two: fs.existsAsync('second-page/index.html')
+    })
+    .then(function(hasPages) {
+      expect(hasPages.one).to.equal(true);
+      expect(hasPages.two).to.equal(true);
+    });
   });
 
   it('should create posts', function() {
