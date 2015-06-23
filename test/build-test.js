@@ -60,6 +60,7 @@ describe('build', function() {
     .then(function(hasPages) {
       expect(hasPages.one).to.equal(true);
       expect(hasPages.two).to.equal(true);
+      done();
     });
   });
 

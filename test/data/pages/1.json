@@ -1,1 +1,40 @@
+{
+  "id": "52ee644502ff20e0433f2f4b",
+  "checkItemStates": [],
+  "closed": false,
+  "dateLastActivity": "2014-02-02T15:36:00.959Z",
+  "desc": "Hello there! This site was built from the [Stello Boilerplate][sb] board, which demonstrates how to structure your Trello boards for use with *stello*. For this example we're using a public board, but private boards will work too.\n\nFor more information on *stello* see the docs on the [GitHub repo][gh].\n\n[sb]: https://trello.com/b/u4YdciVy \"Stello Boilerplate Trello board\"\n[gh]: https://github.com/jtrussell/stello \"Stello on GitHub\"",
+  "descData": {
+    "emoji": {}
+  },
+  "idBoard": "52ee64073f38ee10617ecc09",
+  "idList": "52ee64073f38ee10617ecc0a",
+  "idMembersVoted": [],
+  "idShort": 1,
+  "idAttachmentCover": null,
+  "manualCoverAttachment": false,
+  "idLabels": [],
+  "name": "Hello World",
+  "pos": 65535,
+  "shortLink": "2yB1hjW7",
+  "badges": {
+    "votes": 0,
+    "viewingMemberVoted": false,
+    "subscribed": false,
+    "fogbugz": "",
+    "checkItems": 0,
+    "checkItemsChecked": 0,
+    "comments": 0,
+    "attachments": 0,
+    "description": true,
+    "due": null
+  },
+  "due": null,
+  "idChecklists": [],
+  "idMembers": [],
+  "labels": [],
+  "shortUrl": "https://trello.com/c/2yB1hjW7",
+  "subscribed": false,
+  "url": "https://trello.com/c/2yB1hjW7/1-hello-world"
+}
 {}
