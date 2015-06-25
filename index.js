@@ -10,6 +10,7 @@
 exports.build = function build(stello, cb) {
   var P = require('bluebird')
     , fs = P.promisifyAll(require('fs'))
+    , stelloP = P.promisifyAll(stello)
     , Handlebars = require('handlebars')
     , path = require('path')
     , utf8 = {encoding: 'utf8'};
@@ -27,6 +28,30 @@ exports.build = function build(stello, cb) {
     var layout = results.layout;
     Handlebars.registerPartial('page', results.page);
     Handlebars.registerPartial('post', results.post);
+
+    var hbsTpl = Handlebars.compile(layout);
+
+    var writeCards = function(allCards) {
+      return P.all([].concat(
+        allCards.pages.map(function(c) {
+          c.$$gutsPartial = 'page';
+          return fs
+            .mkdirAsync('...')
+            .then(function() {
+              return fs.writeFileAsync('...');
+            });
+        }),
+        allCards.posts.map(function(c) {
+          c.$$gutsPartial = 'post';
+          // return promise...
+        })));
+    };
+
+    P.props({
+      pages: stelloP.getCardsAsync('Pages'),
+      posts: stelloP.getCardsAsync('Posts')
+    })
+    .then(writeCards);
 
     cb();
   });
