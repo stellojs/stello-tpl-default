@@ -2,7 +2,8 @@
 
 'use strict';
 
-var expect = require('chai').expect
+var chai = require('chai')
+  , chaiAsPromised = require('chai-as-promised')
   , P = require('bluebird')
   , fs = P.promisifyAll(require('fs'))
   , sh = require('shelljs')
@@ -10,6 +11,10 @@ var expect = require('chai').expect
   , cheerio = require('cheerio')
   , build = require('../index.js').build
   , utf8 = {encoding: 'utf8'};
+
+chai.use(chaiAsPromised);
+
+var expect = chai.expect;
 
 var cwdSave = sh.pwd()
   , stello;
@@ -31,9 +36,9 @@ beforeEach(function(done) {
     .then(function(results) {
       stello = {};
       stello.getCards = sinon.stub();
-      stello.getCards.withArgs('Pages').returns(results.slice(0,2));
-      stello.getCards.withArgs('Posts').returns(results.slice(2));
-      stello.getCards.returns(results);
+      stello.getCards.withArgs('Pages').callsArgWith(1, results.slice(0,2));
+      stello.getCards.withArgs('Posts').callsArgWith(1, results.slice(2));
+      stello.getCards.callsArgWith(1, results);
       done();
     });
 });
@@ -52,16 +57,11 @@ describe('build', function() {
     // ...
   });
 
-  it('should create pages', function(done) {
-    P.props({
-      one: fs.existsAsync('first-page/index.html'),
-      two: fs.existsAsync('second-page/index.html')
-    })
-    .then(function(hasPages) {
-      expect(hasPages.one).to.equal(true);
-      expect(hasPages.two).to.equal(true);
-      done();
-    });
+  it.only('should create pages', function() {
+    var firstP = fs.existsAsync('first-page/index.html')
+      , secondP = fs.existsAsync('second-page/index.html');
+    expect(firstP).to.eventually.equal(true);
+    expect(secondP).to.eventually.equal(true);
   });
 
   it('should create posts', function() {
