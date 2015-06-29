@@ -36,9 +36,9 @@ exports.build = function build(stello, cb) {
         allCards.pages.map(function(c) {
           c.$$gutsPartial = 'page';
           return fs
-            .mkdirAsync('...')
+            .mkdirAsync('...') // page fs-safe handle
             .then(function() {
-              return fs.writeFileAsync('...');
+              return fs.writeFileAsync('...'); // `dir`/index.html
             });
         }),
         allCards.posts.map(function(c) {
@@ -52,7 +52,5 @@ exports.build = function build(stello, cb) {
       posts: stelloP.getCardsAsync('Posts')
     })
     .then(writeCards);
-
-    cb();
   });
 };
