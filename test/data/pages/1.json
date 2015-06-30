@@ -14,7 +14,7 @@
   "idAttachmentCover": null,
   "manualCoverAttachment": false,
   "idLabels": [],
-  "name": "Hello World",
+  "name": "First Page",
   "pos": 65535,
   "shortLink": "2yB1hjW7",
   "badges": {
@@ -37,4 +37,3 @@
   "subscribed": false,
   "url": "https://trello.com/c/2yB1hjW7/1-hello-world"
 }
-{}

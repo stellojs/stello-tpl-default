@@ -34,10 +34,13 @@ beforeEach(function(done) {
       fs.readFileAsync('../data/posts/3.json', utf8)
     ])
     .then(function(results) {
+      results = results.map(function(cStr) {
+        return JSON.parse(cStr);
+      });
       stello = {};
       stello.getCards = sinon.stub();
-      stello.getCards.withArgs('Pages').callsArgWith(1, results.slice(0,2));
-      stello.getCards.withArgs('Posts').callsArgWith(1, results.slice(2));
+      stello.getCards.withArgs('Pages').callsArgWith(1, null, results.slice(0,2));
+      stello.getCards.withArgs('Posts').callsArgWith(1, null, results.slice(2));
       stello.getCards.callsArgWith(1, results);
       done();
     });
@@ -58,10 +61,10 @@ describe('build', function() {
   });
 
   it.only('should create pages', function() {
-    var firstP = fs.existsAsync('first-page/index.html')
-      , secondP = fs.existsAsync('second-page/index.html');
-    expect(firstP).to.eventually.equal(true);
-    expect(secondP).to.eventually.equal(true);
+    var firstP = fs.readFileAsync('first-page/index.html')
+      , secondP = fs.readFileAsync('second-page/index.html');
+    expect(firstP).to.eventually.be.ok;
+    expect(secondP).to.eventually.be.ok;
   });
 
   it('should create posts', function() {
