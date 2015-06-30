@@ -12,8 +12,15 @@ exports.build = function build(stello, cb) {
     , fs = P.promisifyAll(require('fs'))
     , stelloP = P.promisifyAll(stello)
     , Handlebars = require('handlebars')
+    , kramed = require('kramed')
     , path = require('path')
+    , core = require('./lib/core.js')
     , utf8 = {encoding: 'utf8'};
+
+  Handlebars.registerHelper('md', function(markup) {
+    var html = kramed(markup);
+    return new Handlebars.SafeString(html);
+  });
 
   var tpl = function(p) {
     return path.join(__dirname, 'templates', p);
@@ -36,21 +43,26 @@ exports.build = function build(stello, cb) {
         allCards.pages.map(function(c) {
           c.$$gutsPartial = 'page';
           return fs
-            .mkdirAsync('...') // page fs-safe handle
+            .mkdirAsync(core.slugify(c.name)) // page fs-safe handle
             .then(function() {
-              return fs.writeFileAsync('...'); // `dir`/index.html
+              return fs.writeFileAsync(
+                core.slugify(c.name) + '/index.html',
+                hbsTpl(c)
+              );
             });
-        }),
-        allCards.posts.map(function(c) {
-          c.$$gutsPartial = 'post';
-          // return promise...
-        })));
+        })
+        //allCards.posts.map(function(c) {
+        //  c.$$gutsPartial = 'post';
+        //  // return promise...
+        //})
+      ));
     };
 
     P.props({
       pages: stelloP.getCardsAsync('Pages'),
       posts: stelloP.getCardsAsync('Posts')
     })
-    .then(writeCards);
+    .then(writeCards)
+    .finally(cb);
   });
 };
