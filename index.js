@@ -40,6 +40,17 @@ exports.build = function build(stello, cb) {
 
     var writeCards = function(allCards) {
       return P.all([].concat(
+        // Index page
+        [
+          (function(c) {
+            c.$$gutsPartial = 'page';
+            return fs.writeFileAsync(
+              'index.html',
+              hbsTpl(c)
+            );
+          }(allCards.pages[0]))
+        ],
+        // All pages
         allCards.pages.map(function(c) {
           c.$$gutsPartial = 'page';
           return fs

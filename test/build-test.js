@@ -57,10 +57,11 @@ afterEach(function() {
 
 describe('build', function() {
   it('should create a home page from first pages card', function() {
-    // ...
+    var indexP = fs.readFileAsync('index.html');
+    expect(indexP).to.eventually.be.ok;
   });
 
-  it.only('should create pages', function() {
+  it('should create pages', function() {
     var firstP = fs.readFileAsync('first-page/index.html')
       , secondP = fs.readFileAsync('second-page/index.html');
     expect(firstP).to.eventually.be.ok;
