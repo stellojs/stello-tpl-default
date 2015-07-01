@@ -1,4 +1,4 @@
-/*global expect, it, beforeEach, afterEach */
+/*global, it, before, after, beforeEach, afterEach */
 
 'use strict';
 
@@ -10,49 +10,41 @@ var chai = require('chai')
   , sinon = require('sinon')
   , cheerio = require('cheerio')
   , build = require('../index.js').build
-  , utf8 = {encoding: 'utf8'};
+  , utf8 = {encoding: 'utf8'}
+  , cwdSave = sh.pwd()
+  , expect = chai.expect;
 
 chai.use(chaiAsPromised);
 
-var expect = chai.expect;
-
-var cwdSave = sh.pwd()
-  , stello;
-
-beforeEach(function(done) {
+before(function(done) {
   // Stello templates should expect cwd to be the doc root
+  sh.rm('-rf', __dirname + '/www'); // On err we might not get to clean up
   sh.mkdir(__dirname + '/www');
   sh.cd(__dirname + '/www');
 
-  // Only build the stello stub once
-  return stello ? done() :
-    P.all([
-      fs.readFileAsync('../data/pages/1.json', utf8),
-      fs.readFileAsync('../data/pages/2.json', utf8),
-      fs.readFileAsync('../data/posts/1.json', utf8),
-      fs.readFileAsync('../data/posts/2.json', utf8),
-      fs.readFileAsync('../data/posts/3.json', utf8)
-    ])
-    .then(function(results) {
-      results = results.map(function(cStr) {
-        return JSON.parse(cStr);
-      });
-      stello = {};
-      stello.getCards = sinon.stub();
-      stello.getCards.withArgs('Pages').callsArgWith(1, null, results.slice(0,2));
-      stello.getCards.withArgs('Posts').callsArgWith(1, null, results.slice(2));
-      stello.getCards.callsArgWith(1, results);
-      done();
+  P.all([
+    fs.readFileAsync('../data/pages/1.json', utf8),
+    fs.readFileAsync('../data/pages/2.json', utf8),
+    fs.readFileAsync('../data/posts/1.json', utf8),
+    fs.readFileAsync('../data/posts/2.json', utf8),
+    fs.readFileAsync('../data/posts/3.json', utf8)
+  ])
+  .then(function(results) {
+    results = results.map(function(cStr) {
+      return JSON.parse(cStr);
     });
+    var stello = {};
+    stello.getCards = sinon.stub();
+    stello.getCards.withArgs('Pages').callsArgWith(1, null, results.slice(0,2));
+    stello.getCards.withArgs('Posts').callsArgWith(1, null, results.slice(2));
+    stello.getCards.callsArgWith(1, results);
+    build(stello, done);
+  });
 });
 
-beforeEach(function(done) {
-  build(stello, done);
-});
-
-afterEach(function() {
-  sh.rm('-rf', __dirname + '/www');
+after(function() {
   sh.cd(cwdSave);
+  sh.rm('-rf', __dirname + '/www');
 });
 
 describe('build', function() {
