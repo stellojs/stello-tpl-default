@@ -61,18 +61,35 @@ exports.build = function build(stello, cb) {
                 hbsTpl(c)
               );
             });
+        }),
+        // All posts
+        allCards.posts.map(function(c) {
+          c.$$gutsPartial = 'post';
+          return fs
+            .mkdirAsync('blog/' + c.shortLink)
+            .then(function() {
+              return fs.writeFileAsync(
+                'blog/' + c.shortLink + '/index.html',
+                hbsTpl(c)
+              );
+            });
         })
-        //allCards.posts.map(function(c) {
-        //  c.$$gutsPartial = 'post';
-        //  // return promise...
-        //})
       ));
+    };
+
+    var makeBlogDir = function(args) {
+      return fs
+        .mkdirAsync('blog')
+        .then(function() {
+          return args;
+        });
     };
 
     P.props({
       pages: stelloP.getCardsAsync('Pages'),
       posts: stelloP.getCardsAsync('Posts')
     })
+    .then(makeBlogDir)
     .then(writeCards)
     .finally(cb);
   });
