@@ -11,33 +11,11 @@ exports.build = function build(stello, cb) {
   var P = require('bluebird')
     , fs = P.promisifyAll(require('fs'))
     , stelloP = P.promisifyAll(stello)
-    , Handlebars = require('handlebars')
-    , kramed = require('kramed')
-    , path = require('path')
     , core = require('./lib/core.js')
-    , utf8 = {encoding: 'utf8'};
+    , initHbs = require('./lib/init-hbs.js');
 
-  Handlebars.registerHelper('md', function(markup) {
-    var html = kramed(markup);
-    return new Handlebars.SafeString(html);
-  });
-
-  var tpl = function(p) {
-    return path.join(__dirname, 'templates', p);
-  };
-
-  P.props({
-    layout: fs.readFileAsync(tpl('layouts/default.hbs'), utf8),
-    page: fs.readFileAsync(tpl('partials/page.hbs'), utf8),
-    post: fs.readFileAsync(tpl('partials/post.hbs'), utf8)
-  })
-  .then(function(results) {
-    var layout = results.layout;
-    Handlebars.registerPartial('page', results.page);
-    Handlebars.registerPartial('post', results.post);
-
-    var hbsTpl = Handlebars.compile(layout);
-
+  initHbs()
+  .then(function(hbsTpl) {
     var writeCards = function(allCards) {
       return P.all([].concat(
         // Index page
