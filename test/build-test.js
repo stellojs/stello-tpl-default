@@ -60,13 +60,20 @@ describe('build', function() {
     expect(secondP).to.eventually.be.ok;
   });
 
-  it('should create posts', function() {
-    var firstP = fs.readFileAsync('blog/MJhdP2pD/index.html')
-      , secondP = fs.readFileAsync('blog/NJhdP2pD/index.html')
-      , thirdP = fs.readFileAsync('blog/oJhdP2pD/index.html');
-    expect(firstP).to.eventually.be.ok;
-    expect(secondP).to.eventually.be.ok;
-    expect(thirdP).to.eventually.be.ok;
+  describe('blog', function() {
+    it('should create an inde page', function() {
+      var firstP = fs.readFileAsync('blog/index.html')
+      expect(firstP).to.eventually.be.ok;
+    });
+
+    it('should create posts', function() {
+      var firstP = fs.readFileAsync('blog/MJhdP2pD/index.html')
+        , secondP = fs.readFileAsync('blog/NJhdP2pD/index.html')
+        , thirdP = fs.readFileAsync('blog/oJhdP2pD/index.html');
+      expect(firstP).to.eventually.be.ok;
+      expect(secondP).to.eventually.be.ok;
+      expect(thirdP).to.eventually.be.ok;
+    });
   });
 
   it('should create a search page', function() {
