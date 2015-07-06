@@ -61,7 +61,7 @@ describe('build', function() {
   });
 
   describe('blog', function() {
-    it('should create an inde page', function() {
+    it('should create an index page', function() {
       var firstP = fs.readFileAsync('blog/index.html')
       expect(firstP).to.eventually.be.ok;
     });
