@@ -75,8 +75,4 @@ describe('build', function() {
       expect(thirdP).to.eventually.be.ok;
     });
   });
-
-  it('should create a search page', function() {
-    // ...
-  });
 });
