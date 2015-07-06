@@ -1,9 +1,20 @@
 <h3>Recent Posts</h3>
 
 <ul class="blog-posts">
-{{#each posts}}
+{{#each teasers}}
   <li class="post">
     <h4>{{name}}</h4>
   </li>
 {{/each}}
 </ul>
+
+<script type="text/javascript" charset="utf-8">
+  var posts = [
+    {{#each posts}}
+      {
+        name: '{{name}}',
+        summary: ''
+      }{{#unless @last}},{{/unless}}
+    {{/each}}
+  ];
+</script>

@@ -46,13 +46,14 @@ exports.build = function build(stello, cb) {
             var data = {
               $$gutsPartial: 'blog',
               title: 'Blog',
+              teasers: posts.slice(0, 5),
               posts: posts
             };
             return fs.writeFileAsync(
               'blog/index.html',
               hbsTpl(data)
             );
-          }(allCards.posts.slice(0,5)))
+          }(allCards.posts))
         ],
         // All posts
         allCards.posts.map(function(c) {
