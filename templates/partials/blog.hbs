@@ -1,12 +1,20 @@
-<h3>Recent Posts</h3>
+<h3>
+  Recent Posts
+  <a class="blog-search-button" href="#">
+    (search)
+  </a>
+</h3>
 
-<ul class="blog-posts">
-{{#each teasers}}
-  <li class="post">
-    <h4>{{name}}</h4>
-  </li>
-{{/each}}
+<ul class="blog-teasers">
+  <!-- the ol' scripts will fill me in -->
 </ul>
+
+<script id="tpl-teaser" type="text/jq-template" charset="utf-8">
+  <li class="teaser">
+    <h4 class="teaser-title"></h4>
+    <p class="teaser-body"></p>
+  </li>
+</script>
 
 <script type="text/javascript" charset="utf-8">
   var posts = [
@@ -17,4 +25,26 @@
       }{{#unless @last}},{{/unless}}
     {{/each}}
   ];
+
+(function($) {
+$(function() {
+  var $tplTeaser = $($('#tpl-teaser').text());
+
+  var showTeasers = function(tPosts) {
+    var $teasers = $('.blog-teasers');
+    $teasers.empty();
+    $.each(tPosts, function(ix, p) {
+      var $t = $tplTeaser.clone();
+      $t.find('.teaser-title').html(p.name);
+      $t.find('.teaser-body').html('teaser!');
+      $teasers.append($t);
+    });
+  };
+
+  // ...
+
+  // Show teasers for the first five posts initially
+  showTeasers(posts.slice(0, 5));
+});
+}(jQuery));
 </script>

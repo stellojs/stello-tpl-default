@@ -46,7 +46,6 @@ exports.build = function build(stello, cb) {
             var data = {
               $$gutsPartial: 'blog',
               title: 'Blog',
-              teasers: posts.slice(0, 5),
               posts: posts
             };
             return fs.writeFileAsync(
