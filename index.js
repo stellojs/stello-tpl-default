@@ -22,6 +22,7 @@ exports.build = function build(stello, cb) {
         [
           (function(c) {
             c.$$gutsPartial = 'page';
+            c.$$pages = allCards.pages;
             return fs.writeFileAsync(
               'index.html',
               hbsTpl(c)
@@ -31,6 +32,7 @@ exports.build = function build(stello, cb) {
         // All pages
         allCards.pages.map(function(c) {
           c.$$gutsPartial = 'page';
+          c.$$pages = allCards.pages;
           return fs
             .mkdirAsync(core.slugify(c.name)) // page fs-safe handle
             .then(function() {
@@ -45,6 +47,7 @@ exports.build = function build(stello, cb) {
           (function(posts) {
             var data = {
               $$gutsPartial: 'blog',
+              $$pages: allCards.pages,
               title: 'Blog',
               posts: posts
             };
