@@ -1,6 +1,6 @@
 {
   "name": "stello-tpl-starter",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A basic template for stello",
   "main": "index.js",
   "private": true,
