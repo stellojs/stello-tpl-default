@@ -3,10 +3,8 @@
   "version": "0.0.1",
   "description": "A basic template for stello",
   "main": "index.js",
-  "private": true,
   "scripts": {
-    "test": "node_modules/.bin/mocha",
-    "testw": "node_modules/.bin/mocha -w"
+    "test": "echo \"shame\""
   },
   "repository": {
     "type": "git",
