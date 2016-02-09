@@ -22,18 +22,5 @@
   "bugs": {
     "url": "https://github.com/stellojs/stello-tpl-starter/issues"
   },
-  "homepage": "https://github.com/stellojs/stello-tpl-starter",
-  "dependencies": {
-    "bluebird": "^2.9.30",
-    "handlebars": "^3.0.3",
-    "kramed": "^0.5.0"
-  },
-  "devDependencies": {
-    "chai": "^3.0.0",
-    "chai-as-promised": "^5.1.0",
-    "cheerio": "^0.19.0",
-    "mocha": "^2.2.5",
-    "shelljs": "^0.5.1",
-    "sinon": "^1.15.3"
-  }
+  "homepage": "https://github.com/stellojs/stello-tpl-starter"
 }
