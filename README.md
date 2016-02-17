@@ -1,6 +1,6 @@
 # Stello Template Starter (WIP)
 
-> A basic started template for [Stello][stello-repo].
+> A basic starter template for [Stello][stello-repo].
 
  
 ## Workspace Layout
