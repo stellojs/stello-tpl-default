@@ -1,4 +1,4 @@
-# Stello Template Starter (WIP)
+# Stello Template Starter
 
 > A basic starter template for [Stello][stello-repo].
 
