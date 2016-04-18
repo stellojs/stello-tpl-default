@@ -15,6 +15,7 @@ directory it will be silently replaced.
 |   |   +-- eachCard.js
 |   |   +-- eachCardInList.js
 |   |   +-- eachList.js
+|   |   +-- ifHasLabel.js
 |   +-- partials/
 |   +-- index-board.html.hbs
 |   +-- index-card.html.hbs
@@ -41,6 +42,9 @@ directory it will be silently replaced.
   this helper to iterate through the lists on your board. Note that this helper
   can be used from any context in your templates. E.g. `{{#eachList}}
   {{this.name}} {{/eachList}}`.
+- `./src/helpers/ifHasLabel.js` - A block helper to conditionally evaluate
+  invoke a given block if the card in context has a particular tag. E.g.
+  `{{#ifHasLabel 'Bug'}} {{name}} is a bug! {{/ifHasLabel}}`.
 - `./src/partials` - Stello looks in this folder for `*.hbs` files and creates a
   handlebars partial for each file it finds. The partial name will be the name
   of the file without an extension, the partial itself will just be the file
